@@ -1,0 +1,26 @@
+name: 'Terraform CDK'
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  terraform:
+    name: 'Terraform CDK'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 0.13.0
+        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '12'
+    - run: yarn install
+    - run: cdktf diff
