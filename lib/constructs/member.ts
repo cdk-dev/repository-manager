@@ -10,6 +10,7 @@ interface MemberConfig {
 
 export class Member extends Resource {
   public readonly name: string;
+  public readonly isOwner: boolean;
 
   constructor(scope: Construct, name: string, config: MemberConfig) {
     super(scope, name);
@@ -25,6 +26,12 @@ export class Member extends Resource {
       })
     }
 
+    this.isOwner = isOwner;
+
     teams.forEach((team) => team.addMember(this))
+  }
+
+  public get role(): string {
+    return this.isOwner ? 'maintainer' : 'member'
   }
 }

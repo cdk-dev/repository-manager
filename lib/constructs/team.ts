@@ -20,7 +20,7 @@ export class Team extends Resource {
     new Github.TeamMembership(this, `membership-${this.resource.name}`, {
       username: member.name,
       teamId: this.resource.id!,
-      role: 'member'
+      role: member.role
     })
   }
 }
