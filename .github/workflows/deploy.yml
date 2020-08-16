@@ -35,4 +35,5 @@ jobs:
     - name: Deploy
       env:
         GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
-      run: "$(yarn bin)/cdktf diff"
+      run: "$(yarn bin)/cdktf synth"
+    - run: "cd cdktf.out && terraform plan"
