@@ -36,4 +36,4 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
       run: "$(yarn bin)/cdktf synth"
-    - run: "cd cdktf.out && rm -rf .terraform && terraform init && terraform deploy"
+    - run: "cd cdktf.out && rm -rf .terraform && terraform init && terraform apply -auto-approve"
