@@ -1,4 +1,4 @@
-name: 'Terraform CDK'
+name: 'Repository Manager'
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   terraform:
-    name: 'Terraform CDK'
+    name: 'Deploy'
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -23,4 +23,5 @@ jobs:
       with:
         node-version: '12'
     - run: yarn install
+    - run: "mkdir .gen" # Will go away with one of the next versions of cdktf
     - run: "$(yarn bin)/cdktf synth"
