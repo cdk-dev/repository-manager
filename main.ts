@@ -1,6 +1,8 @@
 import { Construct } from 'constructs';
 import { App, TerraformStack, RemoteBackend } from 'cdktf';
-import { GithubProvider, Repository } from '@cdktf/provider-github'
+import { GithubProvider } from '@cdktf/provider-github'
+import { Repositories, Members } from './lib'
+import { Teams } from './lib/teams';
 
 class MyStack extends TerraformStack {
   constructor(scope: Construct, name: string) {
@@ -19,33 +21,9 @@ class MyStack extends TerraformStack {
       organization: 'cdk-dev'
     })
 
-    const defaultRepositoryOptions = {
-      homepageUrl: 'https://cdk.dev',
-      hasIssues: true,
-      hasWiki: false,
-      hasProjects: false,
-      deleteBranchOnMerge: true,
-      topics: ['cdk', 'aws-cdk', 'terraform-cdk', 'cdktf', 'cdk8s', 'constructs', 'jsii']
-    }
-
-    new Repository(this, 'base', {
-      ...defaultRepositoryOptions,
-      name: 'base',
-      description: 'Repo for organizing things around cdk.dev'
-    })
-
-    new Repository(this, 'website', {
-      ...defaultRepositoryOptions,
-      name: 'website',
-      description: 'Website for cdk.dev'
-    })
-
-    new Repository(this, 'repository-manager', {
-      ...defaultRepositoryOptions,
-      name: 'repository-manager',
-      description: 'Manage repositories within this organization with Terraform CDK',
-      topics: ['cdk', 'terraform-cdk', 'cdktf']
-    })
+    const teams = new Teams(this, 'teams')
+    new Repositories(this, 'repositories', { teams })
+    new Members(this, 'members', { teams })
   }
 }
 
