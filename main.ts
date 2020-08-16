@@ -20,37 +20,32 @@ class MyStack extends TerraformStack {
     })
 
     const topics = ['cdk', 'aws-cdk', 'terraform-cdk', 'cdktf', 'cdk8s', 'constructs', 'jsii']
-
-    new Repository(this, 'base', {
-      name: 'base',
-      description: 'Repo for organizing things around cdk.dev',
+    const defaultRepositoryOptions = {
       homepageUrl: 'https://cdk.dev',
       hasIssues: true,
       hasWiki: false,
       hasProjects: false,
       deleteBranchOnMerge: true,
+    }
+
+    new Repository(this, 'base', {
+      name: 'base',
+      description: 'Repo for organizing things around cdk.dev',
+      ...defaultRepositoryOptions,
       topics
     })
 
     new Repository(this, 'website', {
       name: 'website',
+      ...defaultRepositoryOptions,
       description: 'Website for cdk.dev',
-      homepageUrl: 'https://cdk.dev',
-      hasIssues: true,
-      hasWiki: false,
-      hasProjects: false,
-      deleteBranchOnMerge: true,
       topics
     })
 
     new Repository(this, 'repository-manager', {
+      ...defaultRepositoryOptions,
       name: 'repository-manager',
       description: 'Manage repositories within this organization with Terraform CDK',
-      homepageUrl: 'https://cdk.dev',
-      hasIssues: true,
-      hasWiki: false,
-      hasProjects: false,
-      deleteBranchOnMerge: true,
       topics: ['cdk', 'terraform-cdk', 'cdktf']
     })
   }
