@@ -23,6 +23,10 @@ export class Repositories extends Resource {
       description: 'Website for cdk.dev'
     })
 
+    new Repository(this, 'foobarbaz', {
+      description: 'test'
+    })
+
     website.addTeam(collaborators, RepositoryPermissions.PUSH)
 
     const repositoryManager = new Repository(this, 'repository-manager', {
