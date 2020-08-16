@@ -23,4 +23,4 @@ jobs:
       with:
         node-version: '12'
     - run: yarn install
-    - run: cdktf diff
+    - run: "$(yarn bin)/cdktf diff"
