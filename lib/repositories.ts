@@ -21,6 +21,10 @@ export class Repositories extends Resource {
   public mainRepos() {
     const { collaborators } = this.teams.resources
 
+    new Repository(this, 'foobarza', {
+      description: 'Repo for organizing things around cdk.dev'
+    })
+
     const base = new Repository(this, 'base', {
       description: 'Repo for organizing things around cdk.dev'
     })
