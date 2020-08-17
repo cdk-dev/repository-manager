@@ -44,7 +44,7 @@ export class Repository extends Resource {
       name,
       description,
       lifecycle: { // there seems to be an issue in github actions with these attributes, they're assumed to be false all the time.
-        ignoreChanges: ['deleteBranchOnMerge', 'allowMergeCommit', 'allowRebaseMerge', 'allowSquashMerge']
+        ignoreChanges: ['delete_branch_on_merge', 'allow_merge_commit', 'allow_rebase_merge', 'allow_squash_merge']
       }
     })
   }
