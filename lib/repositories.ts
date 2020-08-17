@@ -8,12 +8,18 @@ export interface RepositoriesConfig {
 }
 
 export class Repositories extends Resource {
-  public readonly repositories: Repository[];
+  public readonly repositories: Repository[] = [];
+  public readonly teams: Teams
 
   constructor(scope: Construct, name: string, config: RepositoriesConfig) {
     super(scope, name);
+    this.teams = config.teams
 
-    const { collaborators } = config.teams.resources
+    this.mainRepos()
+  }
+
+  public mainRepos() {
+    const { collaborators } = this.teams.resources
 
     const base = new Repository(this, 'base', {
       description: 'Repo for organizing things around cdk.dev'
@@ -30,10 +36,10 @@ export class Repositories extends Resource {
       topics: ['cdk', 'terraform-cdk', 'cdktf']
     })
 
-    this.repositories = [
+    this.repositories.push(
       base,
       website,
       repositoryManager
-    ]
+    )
   }
 }
