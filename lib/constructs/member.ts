@@ -5,7 +5,7 @@ import { Team } from './team'
 
 interface MemberConfig {
   readonly teams: Team[];
-  readonly isOwner: boolean;
+  readonly isOwner?: boolean;
 }
 
 export class Member extends Resource {

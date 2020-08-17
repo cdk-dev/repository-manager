@@ -13,13 +13,12 @@ export class Members extends Resource {
   constructor(scope: Construct, name: string, config: MembersConfig) {
     super(scope, name);
 
-    const { collaborators } = config.teams.resources
+    const { tools } = config.teams.resources
 
     this.members = [
-      new Member(this, 'skorfmann', {
-        isOwner: true,
+      new Member(this, 'wulfmann', {
         teams: [
-          collaborators
+          tools
         ]
       })
     ]

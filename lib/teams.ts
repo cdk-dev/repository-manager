@@ -4,6 +4,7 @@ import { Team } from './index';
 
 export interface CdkDevTeams {
   collaborators: Team
+  tools: Team
 }
 
 export class Teams extends Resource {
@@ -13,7 +14,8 @@ export class Teams extends Resource {
     super(scope, name);
 
     this.resources = {
-      collaborators: new Team(this, 'collaborators')
+      collaborators: new Team(this, 'collaborators'),
+      tools: new Team(this, 'tools')
     }
   }
 }
