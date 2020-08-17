@@ -32,8 +32,9 @@ jobs:
 
     - run: yarn install
     - run: "mkdir .gen" # Will go away with one of the next versions of cdktf
+    - name: Synth
+      run: "$(yarn bin)/cdktf synth"
     - name: Deploy
       env:
         GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
-      run: "$(yarn bin)/cdktf synth"
-    - run: "cd cdktf.out && rm -rf .terraform && terraform init && terraform apply -auto-approve"
+      run: "cd cdktf.out && rm -rf .terraform && terraform init && terraform apply -auto-approve"
