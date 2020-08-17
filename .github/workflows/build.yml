@@ -30,12 +30,12 @@ jobs:
     - run: yarn install
     - run: "mkdir .gen" # Will go away with one of the next versions of cdktf
     - name: Synth
-      env:
-        GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
       run: "$(yarn bin)/cdktf synth"
     - name: Plan
       id: plan
       run: "cd cdktf.out && rm -rf .terraform && terraform init && terraform plan -no-color"
+      env:
+        GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
       continue-on-error: true
     - uses: actions/github-script@0.9.0
       if: github.event_name == 'pull_request'
