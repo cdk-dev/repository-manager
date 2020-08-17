@@ -26,12 +26,16 @@ export class Repository extends Resource {
     this.name = name;
     const { description, topics = ['cdk', 'aws-cdk', 'terraform-cdk', 'cdktf', 'cdk8s', 'constructs', 'jsii'] } = config;
 
-    const defaultRepositoryOptions = {
+    const defaultRepositoryOptions: Github.RepositoryConfig = {
+      name: 'placeholder',
       homepageUrl: 'https://cdk.dev',
       hasIssues: true,
       hasWiki: false,
       hasProjects: false,
       deleteBranchOnMerge: true,
+      allowMergeCommit: true,
+      allowRebaseMerge: true,
+      allowSquashMerge: true,
       topics
     }
 
