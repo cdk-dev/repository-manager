@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@cdktf/provider-github@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@cdktf/provider-github/-/provider-github-0.0.1.tgz#9459e0b7635073f3716742e8222e65856487be0e"
-  integrity sha512-y2i+ZAM4ECbtnY/lWcf/k8iZwripju1bIEUK5XW0sHRO09mjFr5ziidlF739qbWYYTzBH+GYZSReay9CtU3JYw==
+"@cdktf/provider-github@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@cdktf/provider-github/-/provider-github-0.0.5.tgz#a89aaf71affecdc8dd00d959303b091b016264bf"
+  integrity sha512-rvfHkF9V2WQqQpVxqNv2yPBBeMs1UZpIdoAylr6GPWZGXhfedSQTTzH1U7SCth/RcS4wQefKesFLh9QU5YHx7w==
 
 "@jsii/spec@^1.1.0", "@jsii/spec@^1.10.0":
   version "1.10.0"
@@ -166,6 +166,13 @@ cdktf-cli@0.0.14:
     semver "^7.3.2"
     sscaff "^1.2.0"
     yargs "^15.1.0"
+
+cdktf-github-constructs@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/cdktf-github-constructs/-/cdktf-github-constructs-0.0.1.tgz#b37b7b7340d8c6412b8e6c2783036c8c57333aa9"
+  integrity sha512-50IO99w/og/viXM0QfNr7MLUQgX9Hjz1sY8e/S8NpPHkL2l33GZstaJULUNAKq6GtpVSRvYyIb4hGAogSXiiYw==
+  dependencies:
+    "@cdktf/provider-github" "^0.0.5"
 
 cdktf@0.0.14:
   version "0.0.14"

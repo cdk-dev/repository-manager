@@ -1,7 +1,7 @@
 import { Construct } from 'constructs';
 import { Resource } from 'cdktf';
 import { Teams } from './teams';
-import { Member } from './constructs/member';
+import { Member } from 'cdktf-github-constructs';
 
 export interface MembersConfig {
   teams: Teams
