@@ -16,6 +16,7 @@ export class Repositories extends Resource {
     this.teams = config.teams
 
     this.mainRepos()
+    this.toolRepos()
   }
 
   public mainRepos() {
@@ -40,6 +41,35 @@ export class Repositories extends Resource {
       base,
       website,
       repositoryManager
+    )
+  }
+
+  public toolRepos() {
+    const { tools } = this.teams.resources
+
+    const createCdkApp = new Repository(this, 'create-cdk-app', {
+      description: 'Create CDK Apps from Templates',
+      topics: ['cdk', 'create-app', 'aws', 'templates', 'aws-cdk']
+    })
+
+    const bumpCdkAction = new Repository(this, 'bump-cdk-action', {
+      description: 'GitHub Action for automating cdk version management',
+      topics: ['cdk', 'aws-cdk', 'github-actions', 'github', 'actions']
+    })
+
+    const bumpCdk = new Repository(this, 'bump-cdk', {
+      description: 'Easily manage AWS CDK Dependencies',
+      topics: ['aws', 'aws-cdk', 'version-management', 'cli', 'tool']
+    })
+
+    createCdkApp.addTeam(tools, RepositoryPermissions.ADMIN)
+    bumpCdkAction.addTeam(tools, RepositoryPermissions.ADMIN)
+    bumpCdk.addTeam(tools, RepositoryPermissions.ADMIN)
+
+    this.repositories.push(
+      createCdkApp,
+      bumpCdk,
+      bumpCdkAction
     )
   }
 }
