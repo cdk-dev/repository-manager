@@ -1,6 +1,6 @@
 import { Construct } from 'constructs';
 import { Resource } from 'cdktf';
-import { Team } from './index';
+import { Team } from 'cdktf-github-constructs';
 
 export interface CdkDevTeams {
   collaborators: Team
