@@ -172,10 +172,10 @@ cdktf-cli@0.0.14:
     sscaff "^1.2.0"
     yargs "^15.1.0"
 
-cdktf-github-constructs@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/cdktf-github-constructs/-/cdktf-github-constructs-0.0.3.tgz#628b7dd0d6d761f83530d11a76ef39e21eaf12e3"
-  integrity sha512-vH3s7/wOPPtYRjU4E7nzmidI4YN1czeBgwR1yD4YEWYV5yrhCIn97N7rMErjhTTyqi77h8HtxUNmuAmoXErLXA==
+cdktf-github-constructs@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/cdktf-github-constructs/-/cdktf-github-constructs-0.0.4.tgz#8f4eeea02df47588bbcaa0bf3dd26256b265ab71"
+  integrity sha512-DIr2MqwC/7bd0l8GFJlptCUrhScvMrIkEwQfAZmQVGJJgqwLs7//iwVL4rm+y07yuDUxyVZXulpM3TR07VZ8NQ==
   dependencies:
     "@cdktf/provider-github" "^0.0.5"
 

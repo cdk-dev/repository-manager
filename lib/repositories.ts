@@ -2,7 +2,6 @@ import { Construct } from 'constructs';
 import { Resource } from 'cdktf';
 import { Repository, RepositoryConfig } from 'cdktf-github-constructs';
 import { Teams } from './teams';
-
 export interface RepositoriesConfig {
   teams: Teams
 }
@@ -33,12 +32,14 @@ export class Repositories extends Resource {
     })
 
     website.addTeam(collaborators, Repository.Permissions.PUSH)
+    website.requirePullRequestReviews(1)
 
     const repositoryManager = new Repository(this, 'repository-manager', {
       ...this.defaultRepositoryOptions,
       description: 'Manage repositories within this organization with Terraform CDK',
       topics: ['cdk', 'terraform-cdk', 'cdktf']
     })
+    repositoryManager.protectBranch("master")
 
     this.repositories.push(
       base,
