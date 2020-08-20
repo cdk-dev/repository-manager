@@ -48,6 +48,11 @@ export class Repositories extends Resource {
       topics: ['cdk', 'terraform-cdk', 'cdktf']
     })
 
+    new BranchProtection(this, 'respository-manager-protection', {
+      repository: repositoryManager.name,
+      branch: 'master'
+    })
+
     this.repositories.push(
       base,
       website,
