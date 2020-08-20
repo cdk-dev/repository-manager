@@ -19,9 +19,9 @@
     "node": ">=10.12"
   },
   "dependencies": {
-    "@cdktf/provider-github": "^0.0.5",
-    "cdktf": "0.0.14",
-    "cdktf-github-constructs": "^0.0.1",
+    "@cdktf/provider-github": "^0.0.8",
+    "cdktf": "^0.0.15",
+    "cdktf-github-constructs": "^0.0.3",
     "constructs": "^3.0.4"
   },
   "devDependencies": {
