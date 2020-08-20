@@ -33,25 +33,14 @@ export class Repositories extends Resource {
     })
 
     website.addTeam(collaborators, Repository.Permissions.PUSH)
-
-    new BranchProtection(this, 'website-protection', {
-      repository: website.name,
-      branch: 'master',
-      requiredPullRequestReviews: [{
-        requiredApprovingReviewCount: 1
-      }]
-    })
+    website.requirePullRequestReviews(1)
 
     const repositoryManager = new Repository(this, 'repository-manager', {
       ...this.defaultRepositoryOptions,
       description: 'Manage repositories within this organization with Terraform CDK',
       topics: ['cdk', 'terraform-cdk', 'cdktf']
     })
-
-    new BranchProtection(this, 'respository-manager-protection', {
-      repository: repositoryManager.name,
-      branch: 'master'
-    })
+    repositoryManager.protectBranch("master")
 
     this.repositories.push(
       base,
