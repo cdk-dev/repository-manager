@@ -2,7 +2,6 @@ import { Construct } from 'constructs';
 import { Resource } from 'cdktf';
 import { Repository, RepositoryConfig } from 'cdktf-github-constructs';
 import { Teams } from './teams';
-import { BranchProtection } from '@cdktf/provider-github'
 export interface RepositoriesConfig {
   teams: Teams
 }
