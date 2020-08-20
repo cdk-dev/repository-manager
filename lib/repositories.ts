@@ -2,7 +2,7 @@ import { Construct } from 'constructs';
 import { Resource } from 'cdktf';
 import { Repository, RepositoryConfig } from 'cdktf-github-constructs';
 import { Teams } from './teams';
-
+import { BranchProtection } from '@cdktf/provider-github'
 export interface RepositoriesConfig {
   teams: Teams
 }
@@ -33,6 +33,14 @@ export class Repositories extends Resource {
     })
 
     website.addTeam(collaborators, Repository.Permissions.PUSH)
+
+    new BranchProtection(this, 'website-protection', {
+      repository: website.name,
+      branch: 'master',
+      requiredPullRequestReviews: [{
+        requiredApprovingReviewCount: 1
+      }]
+    })
 
     const repositoryManager = new Repository(this, 'repository-manager', {
       ...this.defaultRepositoryOptions,
