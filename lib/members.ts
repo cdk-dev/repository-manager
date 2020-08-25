@@ -21,6 +21,11 @@ export class Members extends Resource {
           tools,
           collaborators
         ]
+      }),
+      new Member(this, 'pgollucci', {
+        teams: [
+          collaborators
+        ]
       })
     ]
   }
