@@ -34,6 +34,14 @@ export class Repositories extends Resource {
     website.addTeam(collaborators, Repository.Permissions.PUSH)
     website.requirePullRequestReviews(1)
 
+    const linkScraper = new Repository(this, 'link-scraper', {
+      ...this.defaultRepositoryOptions,
+      description: 'Extract Preview Data from Websites'
+    })
+
+    linkScraper.addTeam(collaborators, Repository.Permissions.PUSH)
+    linkScraper.requirePullRequestReviews(1)
+
     const repositoryManager = new Repository(this, 'repository-manager', {
       ...this.defaultRepositoryOptions,
       description: 'Manage repositories within this organization with Terraform CDK',
@@ -44,7 +52,8 @@ export class Repositories extends Resource {
     this.repositories.push(
       base,
       website,
-      repositoryManager
+      repositoryManager,
+      linkScraper
     )
   }
 
